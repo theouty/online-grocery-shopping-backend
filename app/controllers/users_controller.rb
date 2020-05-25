@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
     def show
         user = User.find_by(username: params[:username])
-        render json: user, except: [:created_at, :updated_at]
+        render json: user.to_json(except: [:created_at, :updated_at])
     end
 
     def create
         user = User.create(user_params)
-        render json: user, except: [:created_at, :updated_at]
+        render json: user.to_json(except: [:created_at, :updated_at])
     end
 
     def update
         user = User.update(user_params)
-        render json: user, except: [:created_at, :updated_at]
+        render json: user.to_json(except: [:created_at, :updated_at])
     end
 
     def destroy

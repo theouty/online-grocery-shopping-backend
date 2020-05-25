@@ -1,17 +1,17 @@
 class CartItemsController < ApplicationController
     def index
         cart_items = CartItem.where("user_id = ?", params[:user_id])
-        render json: cart_items, except: [:created_at, :updated_at]
+        render json: cart_items.to_json(except: [:created_at, :updated_at])
     end
 
     def create
         cart_item = CartItem.create(set_params)
-        render json: cart_item, except: [:created_at, :updated_at]
+        render json: cart_item.to_json(except: [:created_at, :updated_at])
     end
 
     def update
         cart_item = CartItem.update(set_params)
-        render json: cart_item, except: [:created_at, :updated_at]
+        render json: cart_item.to_json(except: [:created_at, :updated_at])
     end
 
     def destroy
