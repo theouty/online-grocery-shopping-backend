@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+eggs = Item.create(name: "Eggs", category: "Dairy", img_url: "./img/Dairy/eggs.jpg", price: 2.99)
