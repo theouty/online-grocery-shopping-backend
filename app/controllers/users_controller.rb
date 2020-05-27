@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
-        render json: user.to_json(except: [:created_at, :updated_at])
+        user = User.new(user_params)
+        if user.save
+            render json: user.to_json(except: [:created_at, :updated_at])
+        else
+            render json: {error: 'That user could not be found'}, status: 401
+        end
     end
 
     def update
