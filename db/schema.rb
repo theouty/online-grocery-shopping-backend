@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_25_195454) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
+    t.string "description"
     t.float "price"
     t.string "category"
     t.string "img_url"
