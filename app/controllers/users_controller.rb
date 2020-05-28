@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def show
-        user = User.find_by(username: params[:username])
+        user = User.find(params[:id])
         render json: user.to_json(except: [:created_at, :updated_at])
     end
 
@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.update(user_params)
+        user = User.find(params[:id])
+        user.update(user_params)
         render json: user.to_json(except: [:created_at, :updated_at])
     end
 
