@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :items, only: [:index, :show]
-  resources :cart_items, only: [:create, :update, :destroy]
+  resources :cart_items, only: [:index,:create, :update, :destroy]
   resources :users, only: [:show, :create, :update, :destroy]
   post '/auth', to: 'auth#create'
  
