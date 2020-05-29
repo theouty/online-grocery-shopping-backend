@@ -20,6 +20,13 @@ class CartItemsController < ApplicationController
         cart_item.destroy
     end
 
+   def destroy_all
+
+        cart_items = CartItem.where("user_id = ?", params[:user_id])
+         cart_items.each{|item| item.destroy}
+         
+   end
+
     private
 
     def set_params
