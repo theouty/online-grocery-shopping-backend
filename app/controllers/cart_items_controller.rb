@@ -1,10 +1,7 @@
 class CartItemsController < ApplicationController
     def index
-        byebug
         cart_items = CartItem.where("user_id = ?", params[:user_id])
-     
-        # render json: {id:cart_items.id,item: cart_items.item, user_id: cart_items.user_id, quantity: cart_items.quantity} 
-        cart_items.to_json(:include=>{:item})
+        render json: cart_items.to_json(include:[:item], except: [:item_id, :created_at, :updated_at,:user_id])
     end
 
     def create
@@ -23,7 +20,12 @@ class CartItemsController < ApplicationController
         cart_item.destroy
     end
 
-    
+   def destroy_all
+
+        cart_items = CartItem.where("user_id = ?", params[:user_id])
+         cart_items.each{|item| item.destroy}
+         
+   end
 
     private
 
